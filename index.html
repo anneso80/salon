@@ -1,0 +1,543 @@
+Structure HTML/CSS pour site de salon d'esthétique
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salon Beauté - Votre institut de beauté</title>
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica', Arial, sans-serif;
+        }
+        
+        /* Variables couleurs */
+        :root {
+            --primary-color: #e8c5b5;
+            --secondary-color: #333;
+            --light-color: #f9f9f9;
+            --accent-color: #b58e78;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--secondary-color);
+        }
+        
+        /* Header et Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        .logo span {
+            color: var(--secondary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .social-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .social-links li {
+            margin-left: 15px;
+        }
+        
+        .social-links a {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url('images/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .hero-text {
+            flex: 1;
+            text-align: left;
+            padding-right: 40px;
+        }
+        
+        .hero-text h1 {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+        
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--secondary-color);
+        }
+        
+        .hero-image {
+            flex: 1;
+            text-align: right;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 20px;
+            background-color: var(--light-color);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-content h3 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+        
+        .service-content p {
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-color);
+        }
+        
+        /* Gallery Section */
+        .gallery {
+            padding: 80px 20px;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .gallery-item {
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 80px 20px;
+            background-color: var(--light-color);
+        }
+        
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+        
+        .contact-info h3 {
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 10px;
+        }
+        
+        .contact-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .footer-links li {
+            margin: 0 15px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                padding: 15px;
+            }
+            
+            .nav-links {
+                margin-top: 20px;
+                width: 100%;
+                justify-content: space-around;
+            }
+            
+            .nav-links li {
+                margin: 0;
+            }
+            
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-text {
+                padding-right: 0;
+                margin-bottom: 40px;
+                text-align: center;
+            }
+            
+            .services-grid,
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">BEAUTÉ <span>+CB</span></div>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#galerie">Galerie</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <ul class="social-links">
+                <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Bienvenue</h1>
+                <p>Institut de beauté et Ongle d'Art</p>
+                <a href="#services" class="btn">Découvrir nos services</a>
+            </div>
+            <div class="hero-image">
+                <img src="salon.png" alt="Salon">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-title">
+            <h2>Nos Services</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-img" style="background-image: url('images/soins-visage.jpg');"></div>
+                <div class="service-content">
+                    <h3>SOINS VISAGE</h3>
+                    <p>Des soins personnalisés pour sublimer votre peau et révéler votre beauté naturelle.</p>
+                    <a href="#" class="btn">En savoir plus</a>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-img" style="background-image: url('images/epilation.jpg');"></div>
+                <div class="service-content">
+                    <h3>ÉPILATION</h3>
+                    <p>Des techniques douces et efficaces pour une peau lisse et soyeuse.</p>
+                    <a href="#" class="btn">En savoir plus</a>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-img" style="background-image: url('images/maquillage.jpg');"></div>
+                <div class="service-content">
+                    <h3>MAQUILLAGE</h3>
+                    <p>Sublimez votre beauté avec nos services de maquillage professionnel.</p>
+                    <a href="#" class="btn">En savoir plus</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="galerie">
+        <div class="section-title">
+            <h2>Notre Galerie</h2>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item" style="background-image: url('images/gallery1.jpg');"></div>
+            <div class="gallery-item" style="background-image: url('images/gallery2.jpg');"></div>
+            <div class="gallery-item" style="background-image: url('images/gallery3.jpg');"></div>
+            <div class="gallery-item" style="background-image: url('images/gallery4.jpg');"></div>
+            <div class="gallery-item" style="background-image: url('images/gallery5.jpg');"></div>
+            <div class="gallery-item" style="background-image: url('images/gallery6.jpg');"></div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="section-title">
+            <h2>Contactez-nous</h2>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Informations</h3>
+                <p><strong>Adresse:</strong> 123 Rue de la Beauté, 75000 Paris</p>
+                <p><strong>Téléphone:</strong> 01 23 45 67 89</p>
+                <p><strong>Email:</strong> contact@beauteplus.fr</p>
+                <p><strong>Horaires:</strong></p>
+                <p>Lundi - Vendredi: 9h - 19h</p>
+                <p>Samedi: 10h - 18h</p>
+                <p>Dimanche: Fermé</p>
+            </div>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nom</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Téléphone</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Envoyer</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="logo">BEAUTÉ <span>+CB</span></div>
+            <ul class="footer-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#galerie">Galerie</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#">Mentions légales</a></li>
+            </ul>
+            <div class="social-links">
+                <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 BEAUTÉ +CB. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Font Awesome (pour les icônes) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    
+    <!-- JavaScript simple pour le formulaire -->
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Votre message a été envoyé. Nous vous répondrons dans les plus brefs délais.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
